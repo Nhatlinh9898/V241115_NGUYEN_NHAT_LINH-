@@ -1,5 +1,6 @@
 package ra.exam_webapp.dao.course;
 
+import net.bytebuddy.description.annotation.AnnotationValue;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -56,4 +57,6 @@ public interface ICourseDao extends JpaRepository<Course, Integer> {
     @Transactional
     @Query("DELETE FROM Course c WHERE c.id = :id")
     void deleteById(@Param("id") Integer id);
+
+    List<Course> findAll(AnnotationValue.Sort sort);
 }
